@@ -36,7 +36,7 @@ export default {
                             e.preventDefault();
                         } else {
                             e.returnValue = false;
-                        };
+                        }
 
                         scrollH = ev.clientY - this.el.offsetTop; //计算出滚动条到网页顶部的距离
 

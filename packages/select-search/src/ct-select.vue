@@ -37,8 +37,6 @@
 
 import ctOption from './ct-option.vue';
 import scrollIntoView from './scroll-into-view.js';
-
-
 export default {
     name: 'ct-select',
     components: {

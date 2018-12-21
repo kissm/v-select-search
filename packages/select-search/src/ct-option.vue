@@ -3,7 +3,6 @@
         {{label}}
     </li>
 </template>
-
 <script>
 export default {
     name: 'ct-option',
