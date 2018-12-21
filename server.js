@@ -11,7 +11,7 @@ for (let i in WLAN) {
 }
 module.exports = {
     port: 80, // 端口号
-    host: 'http://http://192.168.0.7',
+    host: 'http://192.168.0.7',
     https: false,
     proxy: {
         '/v2': {
