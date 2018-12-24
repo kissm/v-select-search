@@ -41,7 +41,6 @@ export default {
     name: 'ct-select',
     components: {
         scrollIntoView,
-        ctOption
     },
     props: {
         width: {//设置选择框长度
@@ -248,13 +247,24 @@ export default {
     }
 }
 </script>
-
 <style lang="less" scoped>
     .input-search-box {
         ::-webkit-input-placeholder {color:#C0C4CC;}
     　　:-moz-placeholder {color:#C0C4CC;}
     　　::-moz-placeholder {color:#C0C4CC;}
     　　:-ms-input-placeholder {color:#C0C4CC;}
+
+        .fade-enter-active,
+        .fade-leave-active {
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            transition: all  .5s;
+        }
+        .fade-enter,
+        .fade-leave-active {
+            opacity: 0;
+        }
+
         font-size: 12px;
         .search-box{
             height: 35px;
@@ -369,14 +379,5 @@ export default {
             }
         }
     }
-    .fade-enter-active,
-    .fade-leave-active {
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
-        transition: all  .5s;
-    }
-    .fade-enter,
-    .fade-leave-active {
-        opacity: 0;
-    }
+
 </style>

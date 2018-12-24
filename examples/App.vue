@@ -33,26 +33,14 @@
           }
       },
       mounted() {
-
-        // axios.get('/v2/book/search?q=vue&alt=json&start=1&count=45')
-        // .then((data)=>{
-        //     this.dataList = [];
-        //     for(let v of data.data.books) {
-        //       this.dataList.push({
-        //         value: v.id,
-        //         label: v.title
-        //       })
-        //     }
-        // })
-        // .catch(function(error){
-        //     console.log(error);
-        // });
       },
       methods: {
         getTextHandler() {
         },
         getName(val) {
 
+        },
+        getName(val) {
         },
       }
   }
