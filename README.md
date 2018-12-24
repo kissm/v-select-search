@@ -1,5 +1,15 @@
 # 基于vue2.0的下拉选择搜索插件
 ![Markdown](http://i1.bvimg.com/672220/53a0515612622e7f.gif)
+
+- 引用
+```
+import 'v-select-search/lib/v-select-search.css';
+import vSelectSearch from 'v-select-search';
+
+Vue.use(vSelectSearch);
+```
+
+- demo
 ```
 
 <template>
