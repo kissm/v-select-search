@@ -1,35 +1,35 @@
 {
-  "name": "v-select-search",
-  "version": "0.3.2",
-  "author": "wanghuatong",
-  "description": "基于Vue下拉搜索",
-  "main": "lib/v-select-search.umd.min.js",
-  "keyword": "v-select-search select-search",
-  "private": false,
-  "scripts": {
-      "serve": "vue-cli-service serve",
-      "build": "vue-cli-service build",
-      "lint": "vue-cli-service lint",
-      "lib": "vue-cli-service build --target lib --name v-select-search --dest lib packages/index.js"
-  },
-  "dependencies": {
-    "vue": "^2.5.17"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.17"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "name": "v-select-search",
+    "version": "0.3.3",
+    "author": "wanghuatong",
+    "description": "基于Vue下拉搜索",
+    "main": "lib/v-select-search.umd.min.js",
+    "keyword": "v-select-search select-search",
+    "private": false,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "lib": "vue-cli-service build --target lib --name v-select-search --dest lib packages/index.js"
+    },
+    "dependencies": {
+        "vue": "^2.5.17"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.2.0",
+        "@vue/cli-service": "^3.2.0",
+        "less": "^3.0.4",
+        "less-loader": "^4.1.0",
+        "vue-template-compiler": "^2.5.17"
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
 }
