@@ -1,5 +1,5 @@
 # 基于vue2.x的下拉选择搜索插件
-![Markdown](http://i1.bvimg.com/672220/53a0515612622e7f.gif)
+![Markdown](https://wanghuatong1988.github.io/v-select-search/examples/assets/demo.gif)
 - npm下载地址
 ```
 npm install --save v-select-search
