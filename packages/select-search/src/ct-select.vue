@@ -10,7 +10,7 @@
                     <input ref="inputblur" type="input" v-model="textValue" @keyup.enter="searchBtn" @keyup="isFlag = false;" @focus="isFlag = false;" placeholder="请输入搜索内容"/>
                 </div>
                 <div class="data-list-box" :style="{ 'height': (data.length > 10 ? scrollHeight : (data.length < 2 ? 160 : data.length * hLi)) + 'px' }">
-                    <div class="data-scroll" v-if="data.length">
+                    <div class="data-scroll" v-show="data.length">
                         <ul class="ul-box" ref="ulbox" :style="{ 'height': (data.length * hLi) + 'px', 'width': width + 'px' }" @mouseleave="leaveUl">
                             <slot></slot>
                         </ul>
@@ -18,7 +18,7 @@
                             <scroll-into-view ref="scrollInto"/>
                         </div>
                     </div>
-                    <div v-else class="tiptxt">暂无数据</div>
+                    <div v-if="!data.length" class="tiptxt">暂无数据</div>
                 </div>
             </div>
         </transition>
@@ -35,7 +35,6 @@
  *   @params delay              请求延时间隔(autoQuery为false时)
 */
 
-import ctOption from './ct-option.vue';
 import scrollIntoView from './scroll-into-view.js';
 export default {
     name: 'ct-select',
@@ -63,9 +62,6 @@ export default {
             type: Number,
             default: 500,
         },
-        data: {
-            type: Array
-        }
     },
     data() {
         return {
@@ -79,6 +75,7 @@ export default {
             hLi: 32,
             isFlag: true,
             timer: null,
+            data: [],
         }
     },
     provide() {
@@ -103,22 +100,8 @@ export default {
         this.setStyle();
     },
     methods: {
-        //鼠标移入
-        moveLi(index) {
-
-            //防止正在操作键盘时鼠标不在范围内导致isCode_40_38值不正确
-            if(this.isCode_40_38 && !this.isMousemove) {
-                this.isCode_40_38 = false;
-            }
-            this.isMousemove = true;
-            if(!this.isCode_40_38) {
-                this.itemIndex = index;
-            }
-
-        },
         //鼠标离开时清空
         leaveUl() {
-
             if(this.$refs && this.$refs.scrollInto) {
                 this.$refs.scrollInto.isShow = 0;
             }

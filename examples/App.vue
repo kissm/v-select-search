@@ -3,14 +3,12 @@
     <div style="width:250px;overflow:hidden;margin:250px auto;">
       <ct-select
         v-model="text"
-        :data="dataList"
         @getSearchName="getName">
         <ct-option
           v-for="(item, index) of dataList"
           :key="index"
           :value="item.value"
-          :label="item.label"
-          :index="index">
+          :label="item.label">
         </ct-option>
       </ct-select>
     </div>

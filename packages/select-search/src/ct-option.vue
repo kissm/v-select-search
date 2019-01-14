@@ -1,5 +1,5 @@
 <template>
-    <li :class="[{'ct-option-li-active': index == $parent.itemIndex}, 'ct-option-li']" @mouseover="moveLi(index)" @click="selectLi">
+    <li :class="[{'ct-option-li-active': itemSelected}, 'ct-option-li']" @mouseover="moveLi" @click="selectLi">
         {{label}}
     </li>
 </template>
@@ -12,29 +12,30 @@ export default {
             required: true
         },
         label: [String, Number],
-        index: [String, Number],
     },
-    data() {
-        return {
-        }
-    },
-    mounted() {
+    created() {
+        this.select.data.push(this);
     },
     methods: {
-        moveLi(index) {
+        moveLi() {
             //防止正在操作键盘时鼠标不在范围内导致isCode_40_38值不正确
             if(this.select.isCode_40_38 && !this.select.isMousemove) {
                 this.select.isCode_40_38 = false;
             }
             this.select.isMousemove = true;
             if(!this.select.isCode_40_38) {
-                this.select.itemIndex = index;
+                this.select.itemIndex = this.select.data.indexOf(this);
             }
         },
         selectLi() {
             this.select.selectLiHandler();
-        }
+        },
     },
+    computed: {
+        itemSelected() {
+            return this.select.data.indexOf(this) == this.select.itemIndex;
+        }
+    }
 }
 </script>
 
