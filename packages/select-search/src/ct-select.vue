@@ -1,13 +1,13 @@
 <template>
     <div class="input-search-box"  @click.stop.prevent>
-        <div ref="searchbox" class="search-box" @click="show =!show;textValue=''" :style="{width: width + 'px'}">
-            <span>{{ title|| '请选择'}}</span>
+        <div ref="searchbox" class="search-box" @click="show =!show; textValue=''" :style="{width: width + 'px'}">
+            <span :style="{color: title ? '#606266' : '#C0C4CC'}">{{ title|| placeholder}}</span>
             <i :class="[{'icon':!show}, {'iconActive': show}]"></i>
         </div>
         <transition name="fade">
-            <div ref="inputbox" class="input-box" v-show="show" :style="{width: width + 'px'}">
+            <div ref="inputbox" class="input-box" v-show="show" :style="{width: width + 5 + 'px'}">
                 <div class="inputStyle" v-if="visibleInput">
-                    <input ref="inputblur" type="input" v-model="textValue" @keyup.enter="searchBtn" @keyup="isFlag = false;" @focus="isFlag = false;" placeholder="请输入搜索内容"/>
+                    <input ref="inputblur" spellcheck="false" type="input" v-model="textValue" @keyup.enter="searchBtn" @focus="isFlag = false;" placeholder="请输入搜索内容"/>
                 </div>
                 <div class="data-list-box" :style="{ 'height': (data.length > 10 ? scrollHeight : (data.length < 2 ? 160 : data.length * hLi)) + 'px' }">
                     <div class="data-scroll" v-show="data.length">
@@ -27,6 +27,7 @@
 
 <script>
 /**
+ *   https://www.npmjs.com/package/v-select-search
  *   @params getSearchName      获取搜索文本
  *   @params data               数据格式 [{label: '飞机', value: 1}]
  *   @params visibleInput       是否隐藏搜索框
@@ -44,7 +45,7 @@ export default {
     props: {
         width: {//设置选择框长度
             type: [String, Number],
-            default: 220,
+            default: 213,
         },
         value: {
             type: [String, Number],
@@ -62,6 +63,9 @@ export default {
             type: Number,
             default: 500,
         },
+        placeholder: {
+            type: String,
+        }
     },
     data() {
         return {
@@ -183,6 +187,7 @@ export default {
             this.isCode_40_38 = false;
         },
         searchBtn(){
+            this.isFlag = false;
             if(this.textValue && this.autoQuery) {
                 this.reductionEmitVal();
             }
@@ -217,6 +222,11 @@ export default {
                 },delay);
             }
         },
+        onOptionDestroy(index) {
+            if(index > -1) {
+                this.data.splice(index, 1);
+            }
+        }
     },
     watch: {
         textValue(val) {
@@ -225,6 +235,9 @@ export default {
                 this.timer = setTimeout(_=>{
                     this.reductionEmitVal();
                 },this.delay);
+            }
+            if(!val) {
+                this.reductionEmitVal();
             }
         },
     }
@@ -255,7 +268,7 @@ export default {
             border-radius: 3px;
             background: #fff;
             line-height: 35px;
-            padding: 0 10px;
+            padding: 0 10px 0 15px;
             position: relative;
             text-align: left;
             &:hover{
@@ -277,7 +290,7 @@ export default {
                 border: 6px solid transparent;
                 position: relative;
                 display: block;
-                float: left;
+                float: right;
                 &::before {
                     content: '';
                     position: absolute;
@@ -287,20 +300,20 @@ export default {
                 }
             }
             .icon {
-                border-color: transparent transparent #ccc transparent;
-                margin: 8px 0 0 0px;
-                &::before{
-                    border-color: transparent transparent #fff transparent;
-                    top: -2px;
-                    left: -4px;
-                }
-            }
-            .iconActive {
                 border-color:#ccc transparent transparent transparent;
                 margin: 15px 0 0 0;
                 &::before{
                     border-color:#fff transparent transparent transparent;
                     top: -6px;
+                    left: -4px;
+                }
+            }
+            .iconActive {
+                border-color: transparent transparent #ccc transparent;
+                margin: 8px 0 0 0px;
+                &::before{
+                    border-color: transparent transparent #fff transparent;
+                    top: -2px;
                     left: -4px;
                 }
             }
@@ -352,6 +365,7 @@ export default {
             border-radius: 4px;
             margin: 0 0 5px 0;
             input[type="input"] {
+                font-size: 12px;
                 width: 96%;
                 outline: none;
                 border: 0;
@@ -359,6 +373,8 @@ export default {
                 line-height: 33px;
                 margin: 0 auto;
                 display: block;
+                padding: 0 5px;
+                box-sizing: border-box;
             }
         }
     }
