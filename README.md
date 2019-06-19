@@ -7,7 +7,6 @@ npm install --save v-select-search
 
 - 引用
 ```
-import 'v-select-search/lib/v-select-search.css';
 import vSelectSearch from 'v-select-search';
 
 Vue.use(vSelectSearch);
